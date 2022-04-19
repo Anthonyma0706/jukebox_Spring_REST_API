@@ -59,5 +59,12 @@ which indeed satisfies **camera and money receiver**. By manually looking up all
  
  Here, by querying http://localhost:8080/jukes/fusion, we can find all the jukeboxes namely _**fusion**_ .
  
+ ### 3. Unit Test
+ <p align="center" width="70%">
+ <img width="634" alt="Screen Shot unit test" src="https://user-images.githubusercontent.com/57332047/164083605-ed767691-f870-4883-9902-bd6e71757588.png">
+ </p>
+ 
+ The Unit Test results after running  ``` ./mvnw test ```.
+ 
  
 
