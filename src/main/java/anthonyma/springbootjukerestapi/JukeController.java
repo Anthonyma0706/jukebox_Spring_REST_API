@@ -19,18 +19,29 @@ class JukeController {
         return "Hello World! This is Anthony's SpringBoot REST API!";
     }
 
+    /**
+     * This method returns a list of LinkedHashMap, representing the json info from the api
+     * Each LinkedHashmap represents a single jukebox information
+     * @return List<LinkedHashMap> list
+     */
     @GetMapping(value = "/jukes")
     public List<LinkedHashMap> getJukesAll(){
         String url = "http://my-json-server.typicode.com/touchtunes/tech-assignment/jukes";
         RestTemplate restTemplate = new RestTemplate(); // read json data from the url (api)
         LinkedHashMap[] jukes = restTemplate.getForObject(url,LinkedHashMap[].class);
 
-        /**		From: System.out.println(list.get(0).getClass());
+        /**	From: System.out.println(list.get(0).getClass());
          *  We find that the list parsed by restTemplate is a LinkedHashMap
          */
         List<LinkedHashMap> list = Arrays.asList(jukes);
         return list;
     }
+
+    /**
+     * Query jukebox by model name
+     * @param modelName
+     * @return ArrayList<LinkedHashMap> listToReturn
+     */
     @GetMapping("/jukes/{modelName}")
     public ArrayList<LinkedHashMap> getJukesByModel(@PathVariable String modelName) {
 
@@ -47,11 +58,12 @@ class JukeController {
     }
 
     /**
-     * We firstly generate a 2-element list for each Juke,containing its component and Map (from getJukesAll())
+     * We firstly generate a 2-element list for each jukebox, containing its component and Map (from getJukesAll())
      * Then save all the 2-element into a superset list, representing all the Jukes
-     * The superset list will be used for comparing the setting requirements,
+     * The superset list will be used for comparing the setting requirements in getSettingsOne()
      * then directly return the Map (all the Juke information)
-     * @return
+     *
+     * @return superSetList
      */
     public ArrayList<ArrayList> getJukeComponentsAndMap() {
 
@@ -82,7 +94,8 @@ class JukeController {
     }
 
     /**
-     * Settings
+     * This method puts all setting info from json format to a List of LinkedHashMap, for querying by setting_ID
+     * @return List<LinkedHashMap<String,ArrayList>> setList
      */
     @GetMapping(value = "/settings")
     public List<LinkedHashMap<String,ArrayList>> getSettingsAll(){
@@ -95,6 +108,14 @@ class JukeController {
         return setList;
     }
 
+    /**
+     * This method queries a given setting_ID, then retrieve its setting requirements (ex. camera)
+     * then iterates through the jukebox info to see which jukebox satisfies the requirement
+     * If the setting_ID is not found, JukeNotFoundException(settingID_Query) will be raised
+     * If the setting_ID is found but no jukebox is qualified, RequirementNotMatchedException() will be raised
+     * @param settingID_Query
+     * @return ArrayList<LinkedHashMap> listToReturn or Exception()
+     */
     @GetMapping("/settings/{settingID_Query}")
     public ArrayList<LinkedHashMap> getSettingsOne(@PathVariable String settingID_Query) {
 
@@ -140,9 +161,6 @@ class JukeController {
         }
         throw new JukeNotFoundException(settingID_Query);
     }
-
-
-
 
 
 }
