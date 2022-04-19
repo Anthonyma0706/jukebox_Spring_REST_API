@@ -49,7 +49,7 @@ when querying this setting_id with requirements being satisfied by any Jukebox, 
       <img width="800" alt="Screen Shot 2022-04-16 at 10 00 23 PM" src="https://user-images.githubusercontent.com/57332047/163697061-7e224f31-c1fb-4d1a-8bb4-7d916ec9a12a.png">
 </p>
 
-which indeed satisfies **camera and money receiver**. By manually looking up all the jukebox info, we validated that this juke was the only qualified one.
+which indeed satisfies **camera and money receiver**. By manually looking up all the jukebox info, we validate that this jukebox is the **only qualified one**.
 
 
 ### 2. Query by model_name 
