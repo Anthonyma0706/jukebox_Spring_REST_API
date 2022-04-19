@@ -1,5 +1,10 @@
 # jukebox_Spring_REST_API
 This is a **Spring Boot REST API** built for retrieving qualified Jukebox objects by a unique setting_id, which represents several Jukebox setting requirements.
+## Main contents 
+- SpringBoot [GET function](src/main/java/anthonyma/springbootjukerestapi/JukeController.java)
+- [Docker Hub Repository](https://hub.docker.com/r/anthonyma0706/springboot-juke-rest-api/tags)
+- [Unit Test Class](src/test/java/anthonyma/springbootjukerestapi/SpringbootJukeRestApiApplicationTests.java). Please run ``` ./mvnw test ``` to see the test results
+
 ## Query by setting_id 
 ### 1. setting_id is NOT found
 <p align="center" width="70%">
