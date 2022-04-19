@@ -4,6 +4,8 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class JukeController {
+
+    @RequestMapping("/")
+    public @ResponseBody String greeting() {
+        return "Hello World! This is Anthony's SpringBoot REST API!";
+    }
 
     @GetMapping(value = "/jukes")
     public List<LinkedHashMap> getJukesAll(){
